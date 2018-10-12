@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/one-page-wonder.min.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="controller.js"></script>
 
   </head>
 
@@ -45,13 +48,26 @@
     </nav>
 
     <header class="masthead text-center text-white">
-      <div class="masthead-content">
+      
+      <!------------------ANGULAR SECTION --------------------------->
+      <div class="masthead-content" ng-app="titleApp" ng-controller="mainCtrl" ng-cloak>
         <div class="container">
-          <h1 class="masthead-heading mb-0">FInd a Movie Based of It's Title</h1>
+          <h1 class="masthead-heading mb-0">Find a Movie Based on Its Title</h1>
           <h2 class="masthead-subheading mb-0">Start typing a title and we'll find your movie below</h2>
-          <input type="text" ng-model="inputPerson" size="100" placeholder="Movie Title">
+          <input type="text" ng-model="titleInput" size="100" placeholder="Movie Title">
+          <button ng-click="searchMovie()">Search</button>
+          <br>
+          <label>{{numResultsString}}</label>
+          <ul>
+            <li ng-repeat="movie in movies">
+              {{movie.original_title}}
+              <img src="{{imgUrl + movie.poster_path}}">
+            </li>
+          </ul>
         </div>
       </div>
+      
+      <!-----------------END ANGULAR SECTION--------------->
       <div class="bg-circle-1 bg-circle"></div>
       <div class="bg-circle-2 bg-circle"></div>
       <div class="bg-circle-3 bg-circle"></div>
