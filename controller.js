@@ -12,6 +12,7 @@ titleApp.controller('mainCtrl', function($scope, $http) {
                 console.log(response.data);
                 for(var i=0; i<response.data.results.length; i++) {
                     if(!response.data.results[i].adult) {
+                        response.data.results[i].poster_path = $scope.imgUrl + response.data.results[i].poster_path;
                         $scope.movies.push(response.data.results[i]);
                     }
                 }
@@ -22,4 +23,15 @@ titleApp.controller('mainCtrl', function($scope, $http) {
                 
             });
     };
+});
+
+titleApp.directive('imageli', function() {
+   return {
+       scope: {
+           movie: "="
+       },
+       restrict: "E",
+       template: "<h1>{{movie.original_title}}</h1>" + 
+        "<img src='{{movie.poster_path}}'>"
+   };
 });

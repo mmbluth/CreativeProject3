@@ -58,12 +58,14 @@
           <button ng-click="searchMovie()">Search</button>
           <br>
           <label>{{numResultsString}}</label>
-          <ul>
+          <imageli ng-repeat="movie in movies" movie="movie" imgpath="movie.imgUrl+movie.poster_path"></imageli>
+          <!--ul>
             <li ng-repeat="movie in movies">
               {{movie.original_title}}
               <img src="{{imgUrl + movie.poster_path}}">
+              
             </li>
-          </ul>
+          </ul-->
         </div>
       </div>
       
