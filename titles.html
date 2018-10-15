@@ -61,8 +61,11 @@
           <input class="titleInput" type="text" ng-model="titleInput" size="80" placeholder="Movie Title">
           <button class="btn btn-primary rounded-pill titleButton"ng-click="searchMovie()">Search</button>
           <br>
-          <label>{{numResultsString}}</label>
-          <imageli ng-repeat="movie in movies" movie="movie" imgpath="movie.imgUrl+movie.poster_path"></imageli>
+          <label >{{numResultsString}}</label>
+          <div class="container">
+            
+            <imageli ng-repeat="movie in movies" movie="movie" imgpath="movie.imgUrl+movie.poster_path"></imageli>
+          </div>
           <!--ul>
             <li ng-repeat="movie in movies">
               {{movie.original_title}}

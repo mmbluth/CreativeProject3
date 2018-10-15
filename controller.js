@@ -31,7 +31,10 @@ titleApp.directive('imageli', function() {
            movie: "="
        },
        restrict: "E",
-       template: "<h1>{{movie.original_title}}</h1>" + 
-        "<img src='{{movie.poster_path}}'>"
+       /*template:
+       "<h1>{{movie.original_title}}</h1>" + 
+        "<img src='{{movie.poster_path}}'>" + 
+        "<p>{{movie.overview}}</p>"*/
+        templateUrl: "imageli.html"
    };
 });
