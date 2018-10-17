@@ -58,8 +58,8 @@
         <div class="container">
           <h1 class="masthead-heading mb-0">Find a Movie Based on Its Title</h1>
           <h2 class="masthead-subheading mb-0">Start typing a title and we'll find your movie below</h2>
-          <input class="titleInput" type="text" ng-model="titleInput" size="80" placeholder="Movie Title">
-          <button class="btn btn-primary rounded-pill titleButton"ng-click="searchMovie()">Search</button>
+          <input ng-keyup="checkEnter($event)" class="titleInput" type="text" ng-model="titleInput" size="80" placeholder="Movie Title">
+          <button class="btn btn-primary rounded-pill titleButton" ng-click="searchMovie()">Search</button>
           <br>
           <label >{{numResultsString}}</label>
           <div class="container">

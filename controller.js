@@ -9,11 +9,15 @@ titleApp.controller('mainCtrl', function($scope, $http) {
         $http.get(url)
             .then(function(response) {
                 $scope.movies = [];
-                console.log(response.data);
+               console.log(response.data);
                 for(var i=0; i<response.data.results.length; i++) {
                     if(!response.data.results[i].adult) {
-                        response.data.results[i].poster_path = $scope.imgUrl + response.data.results[i].poster_path;
-                        $scope.movies.push(response.data.results[i]);
+                        var posterPath = response.data.results[i].poster_path;
+                        if(posterPath != null) {
+                            response.data.results[i].poster_path = $scope.imgUrl + posterPath;
+                            $scope.movies.push(response.data.results[i]);
+                        }
+                        
                     }
                 }
                 
@@ -23,7 +27,16 @@ titleApp.controller('mainCtrl', function($scope, $http) {
                 
             });
     };
+    
+    $scope.checkEnter = function(event) {
+      if(event.keyCode === 13) {
+        $scope.searchMovie();
+      }
+    };
+    
 });
+
+
 
 titleApp.directive('imageli', function() {
    return {
@@ -31,10 +44,6 @@ titleApp.directive('imageli', function() {
            movie: "="
        },
        restrict: "E",
-       /*template:
-       "<h1>{{movie.original_title}}</h1>" + 
-        "<img src='{{movie.poster_path}}'>" + 
-        "<p>{{movie.overview}}</p>"*/
         templateUrl: "imageli.html"
    };
 });
